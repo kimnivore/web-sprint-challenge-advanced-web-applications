@@ -30,8 +30,8 @@ const View = (props) => {
         setArticles(articles.filter(item =>(item.id !== Number(id))));
       }
 
-    const updateArticles = (article) => {
-        setArticles(article);
+    const updateArticles = (newArticle) => {
+        setArticles(newArticle);
     }
 
     const handleDelete = (id) => {
