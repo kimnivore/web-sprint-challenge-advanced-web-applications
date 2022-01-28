@@ -30,6 +30,10 @@ const View = (props) => {
         setArticles(articles.filter(item =>(item.id !== Number(id))));
       }
 
+    const updateArticles = (article) => {
+        setArticles(article);
+    }
+
     const handleDelete = (id) => {
         axiosWithAuth()
             .delete(`/articles/${id}`)
@@ -43,6 +47,17 @@ const View = (props) => {
     }
 
     const handleEdit = (article) => {
+        axiosWithAuth()
+            .put(`/articles/${id}`, article)
+            .then(resp => {
+                console.log(resp);
+                updateArticles(resp.data);
+                setArticles(resp.data);
+                setEditing(false);
+            })
+            .catch(err => {
+                console.log(err)
+            });
     }
 
     const handleEditSelect = (id)=> {
