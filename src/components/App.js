@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch } from "react-router-dom";
 import styled from 'styled-components';
 
 import PrivateRoute from './PrivateRoute';
+import axios from 'axios';
 
 import Header from './Header';
 import BloomHeader from './BloomHeader';
@@ -11,6 +12,22 @@ import Logout from './Logout';
 import View from './View';
 
 const App = () => {
+  // const [items, setItems] = useState([]);
+
+  // useEffect(()=>{
+  //   axios.get('http://localhost:5000/api/articles')
+  //     .then(res => {
+  //       setItems(res.data);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }, []);
+
+  const deleteArticles = (id) => {
+    setItems(items.filter(item =>(item.id !== Number(id))));
+  }
+ 
   return (
     <AppContainer>
       <BloomHeader/>
@@ -18,7 +35,7 @@ const App = () => {
       <RouteContainer>
       <Switch>
         <PrivateRoute path="/logout" component={Logout}/>
-        <PrivateRoute path="/view" component={View}/>
+        <PrivateRoute path="/view" component={View} deleteArticles={deleteArticles}/>
         <Route path="/login" component={Login}/>
         <Route exact path="/" component={Login}/>
       </Switch>
