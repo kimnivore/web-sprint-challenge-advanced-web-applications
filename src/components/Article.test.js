@@ -25,7 +25,6 @@ test('renders headline, author from the article when passed in through props', (
     const author = screen.queryByTestId('author');
     expect(headline).toBeInTheDocument();
     expect(author).toBeInTheDocument();
-
 });
 
 test('renders "Associated Press" when no author is given', () => {

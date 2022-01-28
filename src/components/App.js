@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from "react-router-dom";
 import styled from 'styled-components';
-
 import PrivateRoute from './PrivateRoute';
 import axios from 'axios';
-
 import Header from './Header';
 import BloomHeader from './BloomHeader';
 import Login from './Login';

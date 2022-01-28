@@ -38,7 +38,6 @@ const EditForm = (props) => {
         handleEdit(article);
     }
 
-
     const handleCancel = (e) => {
         e.preventDefault();
         handleEditCancel();
