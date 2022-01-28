@@ -10,6 +10,8 @@ const Login = () => {
         username: '',
         password: ''
     });
+
+    const [error, setError] = useState('');
     
     const handleChange = (e) => {
         setCredentials({
@@ -31,7 +33,7 @@ const Login = () => {
             })
             .catch(err => {
                 console.log(err);
-                return <p>a server provided error message can be found in err.response.data</p>
+                setError(err.response.data.error)
             });
     };
 
@@ -64,7 +66,7 @@ const Login = () => {
                 </div>
                 <button id='submit'>Submit</button>
             </form>
-            {/* <p id='error'>{error}</p> */}
+           {error && <p id='error'>{error}</p> } 
         
         </ModalContainer>
     </ComponentContainer>);
