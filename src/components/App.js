@@ -11,23 +11,7 @@ import Login from './Login';
 import Logout from './Logout';
 import View from './View';
 
-const App = () => {
-  // const [items, setItems] = useState([]);
-
-  // useEffect(()=>{
-  //   axios.get('http://localhost:5000/api/articles')
-  //     .then(res => {
-  //       setItems(res.data);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }, []);
-
-  const deleteArticles = (id) => {
-    setItems(items.filter(item =>(item.id !== Number(id))));
-  }
- 
+const App = () => { 
   return (
     <AppContainer>
       <BloomHeader/>
@@ -35,7 +19,7 @@ const App = () => {
       <RouteContainer>
       <Switch>
         <PrivateRoute path="/logout" component={Logout}/>
-        <PrivateRoute path="/view" component={View} deleteArticles={deleteArticles}/>
+        <PrivateRoute path="/view" component={View}/>
         <Route path="/login" component={Login}/>
         <Route exact path="/" component={Login}/>
       </Switch>
