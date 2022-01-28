@@ -17,18 +17,10 @@ const App = () => {
       <Header/>
       <RouteContainer>
       <Switch>
-        <PrivateRoute path="/logout" component={Logout} />
-          {/* <Logout/>
-        </PrivateRoute> */}
+        <PrivateRoute path="/logout" component={Logout}/>
         <PrivateRoute path="/view" component={View}/>
-          {/* <View/>
-        </PrivateRoute>   */}
         <Route path="/login" component={Login}/>
-          {/* <Login/>
-        </Route>   */}
         <Route exact path="/" component={Login}/>
-          {/* <Login/>
-        </Route>       */}
       </Switch>
       </RouteContainer>
     </AppContainer>
