@@ -34,7 +34,7 @@ test('renders "Associated Press" when no author is given', () => {
     expect(altText).toBeInTheDocument();
 });
 
-test('executes handleDelete when the delete button is pressed', async () => {
+test('executes handleDelete when the delete button is pressed', () => {
     const handleDelete = jest.fn();
     render(<Article article={sampleArticle} handleDelete={handleDelete}/>);
     const button = screen.queryByTestId('deleteButton');

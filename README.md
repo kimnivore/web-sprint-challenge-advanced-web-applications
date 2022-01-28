@@ -118,8 +118,19 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain what a token is used for.
 
+A token is used for authentication -- it is a security key that allows users to authenticate and prove identity. When users verify their identity, they receive a token in return from the server. This token is stored in the header and allows users to use the website without having to reverify identity. When the session is complete, the token is typically removed from the header for security purposes.
+
 2. What steps can you take in your web apps to keep your data secure?
+
+You can keep data secure by setting up authorization headers with API calls and implementing protected routes through use of an authentication token and redirect protected routes so that sensitive information is not revealed to external users.
 
 3. Describe how web servers work.
 
+A web server is a software program that tells a server what to do. it's purpose is to serve web pages to end users. Users/computers connect through the world wide web and locate servers through URLs and domains. Servers communicate with these computers and retrieve information to be relayed back to the user.
+
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+
+POST = 'C' = CREATE / INSERT DATA (NEW ENTRY)
+GET = 'R' = READ DATA (RETURN ENTRY)
+PUT/PATCH = 'U' = UPDATE DATA OR INSERT IF A NEW ID (UPDATE ENTRY)
+DELETE = 'D' = DELETE DATA (DELETE ENTRY)
