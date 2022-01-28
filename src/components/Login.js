@@ -1,12 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
+    const {push} = useHistory();
+
+    const [credentials, setCredentials] = useState({
+        username: '',
+        password: ''
+    });
     
-    return(<ComponentContainer>
+    const handleChange = (e) => {
+        setCredentials({
+            ...credentials,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.post('http://localhost:5000/api/login', credentials)
+            .then(resp => {
+                localStorage.setItem('username', resp.data.username);
+                localStorage.setItem('password', resp.data.password);
+                localStorage.setItem('token', resp.data.token);
+                localStorage.setItem('role', resp.data.role);
+                push('/view');
+
+            })
+            .catch(err => {
+                console.log(err);
+                return <p>a server provided error message can be found in err.response.data</p>
+            });
+    };
+
+
+    return(
+        <ComponentContainer>
         <ModalContainer>
             <h1>Welcome to Blogger Pro</h1>
             <h2>Please enter your account information.</h2>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label>Username:</label>
+                    <input 
+                        type='text'
+                        id='username'
+                        name='username'
+                        value={credentials.username}
+                        onChange={handleChange}
+                        />
+                </div>
+                <div>
+                    <label>Password:</label>
+                    <input 
+                        type='text'
+                        id='password'
+                        name='password'
+                        value={credentials.password}
+                        onChange={handleChange}
+                        />
+                </div>
+                <button id='submit'>Submit</button>
+            </form>
+            {/* <p id='error'>{error}</p> */}
+        
         </ModalContainer>
     </ComponentContainer>);
 }

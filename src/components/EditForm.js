@@ -9,7 +9,7 @@ const initialArticle = {
     body: ""
 };
 
-const EditForm = (props)=> {
+const EditForm = (props) => {
     const [article, setArticle]  = useState(initialArticle);
     const {handleEdit, handleEditCancel, editId} = props;
 
